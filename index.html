@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b35">
+<title>رصد | بلاغات الأعطال السياحية</title>
+<style>
+:root{--green:#173b35;--green2:#24594d;--gold:#c5a46d;--bg:#f4f6f4;--ink:#1d2925;--muted:#68756f;--line:#e0e7e2;--white:#fff;--red:#a33b35;--amber:#93651b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.65}
+header{background:linear-gradient(120deg,var(--green),#28594d);color:white;padding:24px max(18px,calc((100% - 1100px)/2));}
+.brand{display:flex;align-items:center;gap:14px}.logo{width:52px;height:52px;border:1px solid #ffffff55;border-radius:15px;display:grid;place-items:center;font-size:26px}.brand h1{font-size:25px;margin:0}.brand p{margin:2px 0 0;color:#dbe7e1;font-size:13px}
+.wrap{max-width:1100px;margin:22px auto;padding:0 16px}.notice{background:#fff8e9;border:1px solid #ead8b3;color:#6e521f;border-radius:12px;padding:12px 14px;font-size:13px;margin-bottom:16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab,button{border:0;border-radius:10px;padding:11px 15px;font:inherit;cursor:pointer}.tab{background:#e8eeea;color:var(--green)}.tab.active{background:var(--green);color:white}
+.panel{display:none}.panel.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 2px 9px #173b3508}.stat{font-size:28px;font-weight:bold;color:var(--green)}.muted{color:var(--muted);font-size:13px}h2{font-size:21px;margin:0 0 14px}h3{font-size:16px;margin:0 0 10px}
+label{display:block;font-weight:bold;font-size:14px;margin:13px 0 6px}input,select,textarea{width:100%;padding:12px;border:1px solid #cfd9d2;border-radius:9px;background:white;font:inherit;color:var(--ink)}textarea{min-height:105px;resize:vertical}.primary{background:var(--green);color:white}.secondary{background:#e9efeb;color:var(--green)}.danger{background:#faecea;color:var(--red)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.actions button{flex:1}.cards{display:grid;gap:12px}.report-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.tag{display:inline-block;border-radius:30px;padding:4px 9px;font-size:12px;background:#edf2ee;color:var(--green)}.tag.open{background:#fff2d9;color:var(--amber)}.tag.done{background:#e4f3e9;color:#27613e}.tag.high{background:#fae9e7;color:var(--red)}.steps{display:flex;gap:5px;margin:12px 0}.step{height:6px;flex:1;background:#e6ebe7;border-radius:8px}.step.done{background:#4d8b69}.empty{text-align:center;padding:32px;color:var(--muted)}.small{font-size:12px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 10px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.wrap{margin:14px auto}.card{padding:15px}.brand h1{font-size:22px}}
+@media print{header,.tabs,.notice,.actions,.no-print{display:none!important}.panel{display:block!important}.wrap{max-width:none}.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">ر</div><div><h1>رَصْد</h1><p>نظام بلاغات الأعطال السياحية وإحالتها</p></div></div></header>
+<main class="wrap">
+<div class="notice"><strong>نسخة تجريبية:</strong> تحفظ البلاغات في هذا المتصفح على هذا الجهاز فقط. لا ترسل البلاغات إلى مؤسسة أو قسم صيانة فعلي. لا تدخل بيانات شخصية أو معلومات سرية.</div>
+<nav class="tabs no-print" aria-label="التنقل">
+<button class="tab active" data-tab="home">الرئيسية</button>
+<button class="tab" data-tab="new">بلاغ جديد</button>
+<button class="tab" data-tab="track">متابعة البلاغات</button>
+<button class="tab" data-tab="reports">التقارير</button>
+</nav>
+
+<section id="home" class="panel active">
+<h2>لوحة التحكم</h2>
+<div class="grid">
+<div class="card"><div class="muted">إجمالي البلاغات</div><div class="stat" id="total">0</div></div>
+<div class="card"><div class="muted">بلاغات قيد المتابعة</div><div class="stat" id="pending">0</div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3>تسجيل عطل</h3><p class="muted">أدخل موقع العطل ووصفه وأولويته ثم سجل البلاغ.</p><button class="primary" data-go="new">إنشاء بلاغ</button></div>
+<div class="card"><h3>متابعة الإحالات</h3><p class="muted">تابع انتقال البلاغ بين المرشد والمشرف وقسم الصيانة.</p><button class="secondary" data-go="track">عرض البلاغات</button></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>مبدأ العمل</h3><p class="muted">المرشد السياحي يلاحظ العطل ويسجله. المشرف يراجع البلاغ ويحيله. الفني المعتمد يتولى الفحص والإصلاح وفق إجراءات المؤسسة.</p></div>
+</section>
+
+<section id="new" class="panel">
+<div class="card">
+<h2>تسجيل بلاغ جديد</h2>
+<form id="reportForm">
+<label for="place">موقع العطل</label>
+<select id="place" required><option>المعرض الرئيسي</option><option>قاعة المعارض</option><option>قاعة العرض التفاعلي</option><option>منطقة الاستقبال</option><option>مرافق الزوار</option></select>
+<label for="type">نوع العطل</label>
+<select id="type" required><option>تعطل شاشة العرض</option><option>تعطل جهاز تفاعلي</option><option>مشكلة في الإضاءة</option><option>مشكلة في التكييف</option><option>مشكلة أخرى</option></select>
+<label for="priority">درجة الأولوية</label>
+<select id="priority" required><option>منخفضة</option><option selected>متوسطة</option><option>مرتفعة</option></select>
+<label for="description">وصف المشكلة</label>
+<textarea id="description" required maxlength="700" placeholder="صف ما لاحظته، دون إدخال أسماء الزوار أو بياناتهم الشخصية."></textarea>
+<div class="actions"><button class="primary" type="submit">تسجيل البلاغ</button><button class="secondary" type="reset">مسح الحقول</button></div>
+</form>
+<div id="formMessage" class="muted" role="status" style="margin-top:12px"></div>
+</div>
+</section>
+
+<section id="track" class="panel">
+<div class="report-head"><h2>متابعة البلاغات</h2><button class="secondary no-print" onclick="window.print()">طباعة القائمة</button></div>
+<div id="reportList" class="cards"></div>
+</section>
+
+<section id="reports" class="panel">
+<h2>التقارير والإحصائيات</h2>
+<div class="grid">
+<div class="card"><div class="muted">إجمالي البلاغات</div><div class="stat" id="rTotal">0</div></div>
+<div class="card"><div class="muted">بلاغات مغلقة</div><div class="stat" id="closed">0</div></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>حالات البلاغات</h3><div id="statusSummary"></div>
+<div class="actions no-print"><button class="secondary" id="export">تنزيل سجل CSV</button><button class="danger" id="clear">حذف بيانات التجربة</button></div></div>
+</section>
+<div class="footer">إعداد زيد الرواحي · نموذج أولي للعرض والتقييم</div>
+</main>
+<script>
+const KEY='rasd_demo_reports_v1';
+const stages=['تم تسجيل البلاغ','تمت إحالته إلى المشرف','أُحيل إلى قسم الصيانة','تم الإصلاح والإغلاق'];
+let reports=[];
+try{reports=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(reports))reports=[]}catch(e){reports=[]}
+const save=()=>localStorage.setItem(KEY,JSON.stringify(reports));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function showTab(id){document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));if(id==='track')renderList();if(id==='home'||id==='reports')renderStats();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.go)));
+document.getElementById('reportForm').addEventListener('submit',e=>{
+e.preventDefault();const id='RSD-'+String(Date.now()).slice(-6);
+reports.unshift({id,place:document.getElementById('place').value,type:document.getElementById('type').value,priority:document.getElementById('priority').value,description:document.getElementById('description').value.trim(),status:0,created:new Date().toLocaleString('ar-OM')});
+save();e.target.reset();document.getElementById('formMessage').textContent='تم تسجيل البلاغ التجريبي. رقم البلاغ: '+id;renderStats();
+});
+function renderList(){const root=document.getElementById('reportList');if(!reports.length){root.innerHTML='<div class="card empty">لا توجد بلاغات حتى الآن. ابدأ بتسجيل بلاغ تجريبي.</div>';return}
+root.innerHTML=reports.map((r,i)=>`<article class="card"><div class="report-head"><strong>${esc(r.id)}</strong><span class="tag ${r.status===3?'done':'open'}">${stages[r.status]}</span></div><p class="muted">${esc(r.created||'')}</p><p><strong>الموقع:</strong> ${esc(r.place)}<br><strong>العطل:</strong> ${esc(r.type)}<br><strong>الأولوية:</strong> ${esc(r.priority)}</p><p>${esc(r.description)}</p><div class="steps">${stages.map((s,j)=>`<span class="step ${j<=r.status?'done':''}" title="${s}"></span>`).join('')}</div><p class="small muted">${stages.map((s,j)=>`${j+1}. ${s}`).join(' ← ')}</p>${r.status<3?`<button class="secondary no-print" onclick="advance(${i})">محاكاة إحالة إلى المرحلة التالية</button>`:'<span class="tag done">اكتمل المسار التجريبي</span>'}</article>`).join('');
+}
+function advance(i){if(!reports[i])return;reports[i].status=Math.min(3,reports[i].status+1);save();renderList();renderStats()}
+function renderStats(){document.getElementById('total').textContent=reports.length;document.getElementById('pending').textContent=reports.filter(r=>r.status<3).length;document.getElementById('rTotal').textContent=reports.length;document.getElementById('closed').textContent=reports.filter(r=>r.status===3).length;document.getElementById('statusSummary').innerHTML=stages.map((s,i)=>`<p>${s}: <strong>${reports.filter(r=>r.status===i).length}</strong></p>`).join('')}
+document.getElementById('export').addEventListener('click',()=>{const rows=[['رقم البلاغ','الموقع','نوع العطل','الأولوية','الوصف','الحالة','تاريخ التسجيل'],...reports.map(r=>[r.id,r.place,r.type,r.priority,r.description,stages[r.status],r.created||''])];const csv='\uFEFF'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='rasd-reports.csv';a.click();URL.revokeObjectURL(a.href)});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('هل تريد حذف جميع بلاغات التجربة من هذا المتصفح؟')){reports=[];save();renderStats();renderList()}});
+renderStats();
+</script>
+</body></html>
